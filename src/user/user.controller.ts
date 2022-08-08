@@ -18,4 +18,10 @@ export class UserController {
   getUserByID(@Param('id') id) {
     return this.userService.getUserByID(id)
   }
+
+  @UseGuards(AuthGuard('jwt'))
+  @Get()
+  getAllUser() {
+    return this.userService.getAllUser()
+  }
 }

@@ -18,4 +18,14 @@ export class UserService {
     delete user.password
     return user
   }
+
+  async getAllUser()  {
+    const users = await this.prisma.user.findMany()
+
+    users.map((user)=> {
+      delete user.password
+    })
+
+    return users;
+  }
 }
